@@ -1,0 +1,686 @@
+@import "normalize";
+@import "bourbon";
+@import "neat";
+@import "_settings";
+@import "social_foundicons";
+
+//----------------------------//
+//-- Variables
+//---------------------------//
+
+
+// Base colours
+
+$dark-grey: #404040;
+$black: #121f1d;
+$white: #fff;
+$green: #16a085;
+$dark-green: #374542;
+$grey: #6d6d6d;
+$light-grey-border: #efefef;
+
+
+// Element colours
+
+$body-text: $black;
+$contact-link: $green;
+$footer-border-top: $green;
+
+$sans-serif: "effra", sans-serif;
+$sans-serif-body: "freight-sans-pro", sans-serif;
+
+
+$extra-light: 200;
+$light: 300;
+$regular: 400;
+$bold: 700;
+$font-black: 900;
+
+// Settings
+
+$max-width: 1200px;
+$column: 70px;
+$gutter: 30px;
+$grid-columns: 24;
+
+$desktop: new-breakpoint(min-width 768px max-width 960px);
+$tablet: new-breakpoint(max-width 768px);
+$mobile: new-breakpoint(max-width 480px);
+
+// Resusable styles
+
+.inline                         { 
+                                  li {display: inline;} 
+                                }
+
+.fluid                          { max-width: 100%;}           
+
+.unstyled-list                  { list-style-type: none; padding: 0;}
+
+@mixin text-centre              { text-align: center;}
+
+.white-text                     { color: $white;}
+
+.black-text                     { color: $black;}
+
+.dark-grey-text					{ color: $dark-grey;}
+
+.green-text 					{ color: $green;}
+
+
+
+//----------------------------//
+// Typography
+//----------------------------//
+
+html							{ background-color: $white; font-size: 62.5%; -webkit-font-smoothing: antialiased;}
+
+body                            { color: $dark-grey;}
+
+.main-nav						{ font-size: 1.6em; text-align: right;}
+
+.main-nav__item					{ text-decoration: none; color: $grey; font-weight: $regular; transition: color 0.3s ease-in; font-family: $sans-serif;}
+
+.main-nav__item:hover 			{ color: $green;}
+
+.main-nav__item.active 			{ color: $green;}
+
+.name                           { font-size: 3em; font-weight: $regular;font-family: $sans-serif; line-height: 1.4em;}
+
+.job-title                      { color: $dark-grey; font-size: 2.1em; font-weight: $extra-light; font-family: $sans-serif; line-height: 1.4em;}
+
+.intro-banner__copy 			{ @include media($mobile) { @include text-centre;}}
+
+.strapline-wrap					{ @include media($mobile) { @include text-centre;}}
+
+.strapline 						{ color: $green; font-size: 5.4em; font-weight: $light; line-height: 1.2em; font-family: $sans-serif;
+									@include media(max-width 1160px) {font-size: 4.8em;}
+									@include media(max-width 960px) {font-size: 3.6em;}
+									@include media($tablet) {font-size: 4.2em;}
+									@include media($mobile) {font-size: 3.6em; @include text-centre; color: $white;}
+								}
+
+.strapline__highlight		 	{ font-size: 1.2em; color: $dark-green; font-weight: $regular; 
+									@include media($mobile) { @include clearfix; color: $white;}
+								}
+
+.section__title                 { font-size: 4.8em; @include text-centre; font-weight: $extra-light; font-family: $sans-serif;}
+
+.intro-banner  					{ text-align: left;}
+
+.work > .section__title 		{ font-size: 6em;
+									@include media($tablet) { font-size: 4.8em;}
+									@include media($mobile) { font-size: 3.6em;}
+								}
+
+.work__item__title              { font-size: 3.6em; font-weight: $light;font-family: $sans-serif;
+									@include media($mobile) { @include text-centre;}
+								}
+
+.work__item__type               { font-size: 2.1em; font-weight: $regular; color: $green; font-family: $sans-serif;
+									@include media($mobile) { @include text-centre;}
+								}
+
+.work__item__desc               { font-size: 1.8em; line-height: 1.6em; font-family: $sans-serif-body; font-weight: $regular;
+									@include media($mobile) { @include text-centre;}
+								}
+
+.work__item__more				{ font-size: 1.8em; font-family: $sans-serif; font-weight: $light; color: $white; text-align: center; text-decoration: none;}
+
+.work__item__more:hover			{ color: $green;}
+
+.work__thumbs					{ @include clearfix;}
+
+.work__secondary-title			{ font-size: 4.2em; font-weight: $light; font-family: $sans-serif; @include text-centre;
+									@include media($mobile) { font-size: 3em;}
+								} 
+
+.thumb-caption 					{ @include text-centre; font-weight: $light; font-family: $sans-serif; text-decoration: none;}
+
+.thumb-caption--title   		{ font-size: 3em; color: $dark-grey; font-weight: $light;
+									@include media($mobile) { font-size: 2.4em;}
+								}
+
+.thumb-caption--desc			{ font-size: 1.8em; color: $green; font-weight: $regular;}
+
+.about__title					{ font-size: 4.8em; font-weight: $light; color: $white; font-family: $sans-serif;
+									@include media($mobile) {font-size: 3.6em;}
+								}
+
+.about__bio__text               { font-size: 2.1em; line-height: 1.5em; font-weight: $regular; font-family: $sans-serif-body;
+									@include media($mobile) {font-size: 1.8em;}
+								}
+
+.contact 						{ @include text-centre;}
+
+.contact__title					{ color: $white; font-size: 7.2em; font-weight: $light; font-family: $sans-serif;
+									@include media($mobile) { font-size: 3em;}
+								}
+
+.contact__subhead				{ font-size: 2.6em; @include text-centre; color: $white;}
+
+.contact__email                 { font-size: 4.8em; font-weight: $light;  color: $green; @include text-centre; font-family: $sans-serif;
+									@include media($mobile) { font-size: 2.4em; color: $white; text-decoration: none; font-style: normal;}
+								}
+
+.footer__text                   { font-size: 1.2em; font-weight: $regular; color: $grey; font-family: $sans-serif; 
+									@include media($mobile) {@include text-centre;}
+								}
+
+.copyright						{ color: $green;}
+
+.social 						{ 
+									@include media($mobile) { @include text-centre;}
+								}
+
+.social__icon					{ font-size: 2.4em; color: $grey; text-decoration: none; transition: color 0.3s ease-in;
+									@include media($mobile) { @include text-centre;}
+								}
+
+.social__icon:hover				{ color: $green;}
+
+
+// Work pages
+
+.project-page__title			{ font-family: $sans-serif; text-align: left;
+									@include media($mobile) { text-align: center;}
+								}
+
+.project-page__title h1			{ font-size: 4.2em; font-weight: $regular;}
+
+.project-page__title h2			{ color: $green; font-size: 2.1em; font-weight: $light;}
+
+.project-page__title h3			{ color: $grey; font-size: 1.8em; font-weight: $regular;}
+
+.project-page__intro			{ font-size: 1.8em; font-weight: $regular; font-family: $sans-serif-body; text-align:left; line-height: 1.6em;
+									@include media($mobile) {font-size: 1.8em;}
+								}
+
+.project-page__copy				{ font-size: 1.8em; font-family: $sans-serif-body; font-weight: $regular; @include text-centre; line-height: 1.6em;}
+
+.project-caption 				{ font-size: 1.8em; font-weight: $regular; color: $grey; font-family: $sans-serif;}
+
+.project-caption__description	{ font-weight: $regular;}
+
+.project-caption__highlight		{ color: $green; font-size: 1.4em;}
+
+.project-page__contact 			{ @include text-centre;}
+
+.project-page__contact .contact__email { font-size: 6em; 
+									@include media($mobile) { font-size: 2.4em; color: $white; text-decoration: none; font-style: normal;}
+								}
+
+.arrow-wrapper					{ font-size: 1.8em; font-family: $sans-serif; @include text-centre;}
+
+.other-projects-block			{ text-align: left;}
+
+.other-projects-block__title	{ font-size: 3.6em; font-family: $sans-serif; font-weight: $regular;}
+
+.other-projects-block__copy		{ font-size: 1.8em; line-height: 1.5em; font-family: $sans-serif-body; font-weight: $regular;}
+
+
+//----------------------------//
+// Layout 
+//---------------------------//
+
+body, html 						{ height: 100%; background-color: #f9f9f9;}
+
+.container                      { @include outer-container(); @include pad(auto 2.4em);}
+
+.home-header                    { padding-top: 10%; width: 100%; height: 60%; min-height: 300px; background: url(../images/header-bg-2.jpg) repeat fixed; background-size: cover;
+									@include media($desktop) { height: 100px;}
+									@include media($tablet) { height: 200px;}
+									@include media($mobile) { background-image: none; background-color: $green; height: auto; min-height: 180px; padding-top: 8.4em;}
+								}
+
+.fixed-header					{ position: fixed; z-index: 100; width: 100%; background-color: $white; height: 4.8em; border-bottom: 1px solid $light-grey-border; left: 0; top: 0;}
+ 
+.index .fixed-header			{ top: -60px;
+									@include media($mobile) { top: 0;}
+								}
+
+.logo                           { float: left; margin-top: 1.2em; margin-left: 2.4em; width: 3em;}
+
+.static-logo					{ width: 3em; position: absolute; left: 40px; top: 20px;
+									@include media($mobile) { display: none;}
+								}
+
+.intro-bg 						{ @include fill-parent(); background-color: $white; @include row; border-top: 1px solid $light-grey-border;}
+
+.intro-banner                   { @include pad(12em 0);
+									@include media($mobile) {@include pad(3em 0)}
+								}
+
+.intro-banner__img				{ @include span-columns (2 of 24); @include shift(6); max-width: 125px; position: relative; 
+									@include media($tablet) { @include span-columns (4 of 24); @include shift(3); @include row;}
+									@include media($mobile) { @include span-columns (8 of 24); @include shift(8); @include row;}
+								}
+
+.intro-banner__copy				{ @include span-columns (8 of 24); margin-left: 1.2em; position: relative;
+									@include media($tablet) { @include span-columns (12 of 24); @include shift(1);}
+									@include media($mobile) { @include span-columns (18 of 24); @include shift(3); @include row;}
+								}
+
+.triangle						{ @include triangle(30px, $green, down); position: absolute; right: -20px; top: 30px; border-radius: 2px; display: block;
+									@include media($tablet) { right: -40px;}
+									@include media($mobile) { position: relative; @include clearfix; left: 50%; margin-left: -15px;}
+								}
+
+.main-nav                       { @include text-centre; margin-top: 0;}
+
+.main-nav__list					{ float: right; margin:0;}
+
+.main-nav__item					{ margin-right: 3em; position: relative; padding-top: 12px; display: inline-block;
+									@include media($mobile) { margin-right: 1.8em;}
+								}
+
+.main-nav__item.active 			{ border-top: 5px solid $green; transition: all 0.5s ease; padding-top: 7px;}
+
+
+.strapline 						{ @include span-columns(6 of 24); @include shift(6);
+									@include media($tablet) {@include span-columns(8 of 24); @include shift(3);}
+									@include media($mobile) {@include span-columns(18 of 24); @include shift(3); margin-bottom: 1.2em;}
+								}
+
+.strapline__highlight		 	{ display: block; margin-bottom: 0.12em;
+									@include media($mobile) { display: inline;}
+								}
+
+.header__strapline-graphic		{ @include span-columns(4 of 24); position: relative; margin-top: 4%;
+									@include media($tablet) { @include span-columns(10 of 24);}
+									@include media($mobile) { display: none;}
+								}
+
+.webpage-img, 
+.webpage-img__bg				{ position: absolute; display: inline-block; width: 180px;}
+
+.webpage-img					{ z-index: 10; left: 40%;}
+
+.webpage-img__bg			    { z-index: 5; display: block; left: 40%; background-color: #276b5e; opacity: 0.3; width: 180px; height: 103px;}
+
+.name							{ margin: 0;
+									@include media($mobile) { margin-top: 1.2em;}
+								}
+
+.section__title 				{ margin: 0 0 0.6em 0;}
+
+.job-title 						{ margin: 0;}
+
+.work 							{ @include pad(0.6em 0 12em 0); background-color: $white;
+									@include media($mobile) { padding-bottom: 0;}
+								}
+
+.work__item__bg					{ float: left; width: 100%; border-bottom: 1px solid $light-grey-border; @include linear-gradient(#fff, #f8f8f8); margin-bottom: 24em;
+									@include media($desktop) { margin-bottom: 18em;}
+									@include media($tablet) { margin-bottom: 6em; border: 1px solid $light-grey-border; margin-bottom: 4.8em; padding-top: 3em; border-left: 6px solid $green;}
+								}
+
+.work__item                     { display: inline-block;}
+
+.work__item__title              { margin: 0 0 0.36em 0;}
+
+.work__item__type               { margin: 0;}
+
+.work__item__more				{ transition: background-color 0.5s ease; display: block; position: relative; background-color: $green; @include span-columns(3 of 6); border-radius: 3px; margin-top: 2.6em; padding: 0.4em 0; border: 1px solid $green;
+									@include media($desktop) {@include span-columns(12); margin-bottom: 1.2em;}
+									@include media($tablet) {@include span-columns(6); margin-top: 0.6em; margin-bottom: 1.8em; margin-left: 6px;}
+									@include media($mobile) {@include span-columns(18 of 24); @include shift(3); margin-top: 0.6em;margin-bottom: 2.6em;}
+								}
+
+.work__item__more:hover			{ background-color: #fff; border: 1px solid $green;}
+
+.featured                       { @include fill-parent; @include span-columns(20); @include shift(2); float: left; @include row();}
+
+.work__secondary-title			{ margin-bottom: 3em;}
+
+.thumbs 						{ @include span-columns(24 of 24); @include	shift(0);
+									@include media($desktop){@include span-columns(18 of 24); @include shift(3);}
+									@include media($mobile) { @include fill-parent; @include shift(0); @include pad(4.2em 0);}
+								}
+
+.work__item--secondary          { margin-bottom: 1.3%; position: relative; @include span-columns (6 of 24);
+									@include media(max-width 1000px) { @include span-columns (6 of 18);}
+									@include media($tablet) { @include span-columns (9 of 18);}
+									@include media($mobile) { @include span-columns (14 of 24); @include shift(5);}
+								}
+
+.work__item--secondary > a 		{ text-decoration: none;}
+
+// Omega list items to correct number of thumbs per line at different screen sizes								
+
+.thumbs 						{
+									@include media(min-width 1000px) { li:nth-of-type(4n) { @include omega();}}
+									@include media(min-width 768px max-width 1000px) { li:nth-of-type(3n) { @include omega();}}
+									@include media(min-width 480px max-width 768px) { li:nth-of-type(2n) { @include omega();}}
+									@include media($mobile) { li { @include omega();}}
+								}
+
+
+
+.featured__content              { @include span-columns(6); position: relative; top: 16px;
+									@include media($desktop) { @include span-columns(9);}
+									@include media($tablet) { @include fill-parent();}
+								}
+
+.featured__img                  { @include span-columns(17); @include shift(1); position: relative; border-bottom: 1px solid #cbe4df;
+									@include media($desktop) { @include span-columns(14);}
+									@include media($tablet) { @include span-columns(24); @include shift(0);}
+								}
+
+.featured__img.mobile-project	{ @include span-columns(12); @include shift(4);
+									@include media($mobile) { @include span-columns(14); @include shift(5)}
+								}  
+
+.work .section__title           { margin-bottom: 2.4em; background-color: #ecf3f2; @include pad(1.2em 0)}
+
+.thumb-img						{ opacity: 1; @include transition (all 0.2s ease-in-out); width: 100%; margin: 0 auto; display: block; position:relative; }
+
+.thumb-img.fade-back			{ opacity: 0.05; background-color: $green;  @include transition (all 0.2s ease-in-out);;
+									@include media($mobile) { opacity: 1; @include transition(none); outline: none;}
+								}
+	
+.thumb-caption					{ position: absolute; top: 10px; width: 100%; height: 100%; @include transition (all 0.2s ease-in-out); opacity: 0; display: block;  @include pad(1.8em);
+									@include media($mobile) { position: relative; height: auto; @include transition (none);  opacity: 1; @include pad( 1.2em 0 3.6em 0);}
+								}
+
+.fade-back + .thumb-caption 	{ top: 0; @include transition (all 0.3s ease-out-quad);}
+
+.thumb-caption.visible			{ opacity: 1;}
+
+.thumb-caption--title			{ margin-bottom: 0.3em; margin-top: 30%;
+									@include media($mobile) { margin-top: 0;}
+								}
+
+.about-bg						{ background: $green; background: $black url(../images/about-bg-2.jpg) fixed; background-size: cover; position: relative;
+									@include media($mobile) { background-image: none; padding: 0;}
+								}
+
+.about                          { @include pad(12em 0 24em 0);
+									@include media($tablet) { @include pad(9em 0);}
+									@include media($mobile) { @include pad(0);}
+								}
+
+.about__title					{ @include fill-parent(); @include row(); margin: 1.2em 0;
+									@include media($mobile) { @include fill-parent; @include shift (0); margin-top: 0.6em;}
+								}
+
+.pixels							{ display: inline-block; margin: 0 auto; opacity: 0.4;
+									@include media($mobile) { display: none;}
+								}
+
+.about__bio                     { @include span-columns (18); @include shift (3); color: $white; @include pad(1.8em 6em 6em 6em); background-color: rgba(27,33,32,0.95); margin-top: 9em;
+									@include media($mobile) { @include fill-parent; @include shift (0);  @include pad(3em);}
+								}
+
+.contact-bg                     { background-color: $black; padding: 12em 0; display: inline-block; @include fill-parent();
+									@include media($mobile) { @include pad(1.2em 0); margin: 0;}
+								}
+
+.contact                        { @include fill-parent();}
+
+.contact .logo					{ float: none; margin: 0 auto;}
+
+.contact__icon					{ display: block; opacity: 0; position: relative; margin: 2.6em auto 4.2em auto;}
+
+.contact__email                 { display: inline-block;
+									@include media($mobile) {border-radius: 5px; background-color: $green; padding: 1.2em 0.6em; @include span-columns(20 of 24); @include shift(2);}
+								}
+
+.footer-bg                      { background-color: $black;}
+
+footer                          { @include pad(3.6em 0); margin-top: -2px;}
+
+.footer__text					{ @include span-columns(10 of 24);
+									@include media($mobile) { @include fill-parent();}
+								}
+
+.copyright 						{ display: block; margin-top: 0.6em;}
+
+.social 						{ float: right;
+									@include media($mobile) { float: none; @include span-columns(18 of 24); @include shift(3); @include clearfix; margin-top: 1.2em;}
+								}
+
+.social__icon					{ margin-right: 1.2em;}
+
+.code							{ opacity: 0; height: 0; overflow: hidden; position: relative; @include background-image(url("../images/grid-tile.png") repeat, linear-gradient(#2e2e2e 50%, #212121 100%)); @include transition (all 1s $ease-out-quint); background-repeat: repeat;}
+
+.code.visible 					{ height: 200px; opacity: 1;}
+
+
+
+// Work pages	
+
+
+.project-page__title-bg			{ @include fill-parent(); position: relative; background-color: $white; border-bottom: 1px solid $light-grey-border; border-top: 1px solid $light-grey-border; padding: 6em 0; margin-top: 6em;}
+
+.project-page__title			{ @include span-columns (6); @include shift(2);
+									@include media($tablet) { @include span-columns(18 of 24); @include shift(3);}
+								}
+
+.project-page__intro 			{ @include span-columns (12); @include shift(2); margin-top: 0;
+									@include media($tablet) { @include span-columns(18 of 24); @include shift(3); margin-top: 2.4em;}
+									@include media($mobile) { margin-top: 2.4em;}
+								}
+
+.project-page__title h1			{ margin: 0;}
+
+.project-page__title h2 		{ margin-top: 0.6em;}
+
+.project-page__title h2,
+.project-page__title h3			{ margin-bottom: 0;}
+
+.project-page__title h3			{ margin-top: 0.36em;}
+
+.project-page__copy				{ @include span-columns (14); @include shift(5); margin-top: 1.2em;
+									@include media($mobile) { @include span-columns (20); @include shift(2);}
+								}
+
+.project-page__img				{ margin-top: 18em; display: block; @include span-columns(18); @include shift(3); outline: 1px solid $light-grey-border; box-shadow: 0 2px 2px #ebebeb;
+									@include media($tablet) { margin-top: 6em;}
+									@include media($mobile) { margin-top: 6em; @include span-columns(22); @include shift(1);}
+								}
+
+.mobile-project 				{ @include span-columns(18); @include shift(3);}								
+
+.mobile-project__fig			{ @include span-columns(6 of 18); @include shift(2);}
+
+.mobile-project__fig  
+.project-caption 				{ @include fill-parent(); @include shift(0);}
+
+.mobile-project
+.project-page__img 				{ margin-top: 18em; @include span-columns(7 of 7); max-width: 320px; @include text-centre; display: inline-block;}
+
+.email-img						{ @include span-columns(14); @include shift(5);}
+
+.arrow-wrapper					{ position: fixed; top: 20%; -webkit-transform: translate3d(0, 0, 0);
+									@include media($mobile) { position: absolute; top: 80px;}
+								}
+
+.arrow 							{ width: 44px; height: 44px; display: block; @include hide-text;}
+
+.bottom-arrow					{ display: none;
+									@include media($mobile) { display: inline-block; top: -60px; }
+								}
+
+.previous						{ left: 30px; background: url(../images/prev-arrow.png) no-repeat left; background-size: 60%;}
+
+.next 							{ right: 30px; background: url(../images/next-arrow.png) no-repeat right; background-size: 60%;}
+
+.arrow__job-title				{ position: absolute; top: -20px; opacity:0; border-radius: 5px; background-color: #e8f5f2; padding: 0.6em; border: 1px solid #e5f2ef; @include transform(scale(50%)); width: 200px; }		
+
+.previous .arrow__job-title		{ left: 40px;}
+
+.next .arrow__job-title			{ right: 40px;}
+
+.project-caption 				{ margin-top: 1.8em; margin-bottom: 0.3em; @include span-columns (16); @include shift(4); @include text-centre;}
+
+.project-page__contact 			{ padding: 4.2em 0 12em 0; margin-top: 12em; position: relative;}
+
+.project-page__contact .contact__email 	{ margin-top: 2.4em; position: relative; top: 40px;									
+									@include media($mobile) { border-radius: 5px; background-color: $green; padding: 1.2em 0.6em; @include span-columns(20 of 24); @include shift(2);}
+								}
+
+.project-page__contact__copy 	{ @include fill-parent(); text-align: center;}
+
+.project-caption__description	{ display: block; margin-top: 0.6em;}
+
+.other-projects-block 			{ @include pad(9em 0);}
+
+.other-projects-block			{ @include span-columns(20 of 24); @include shift(2); border-top: 1px solid $light-grey-border;}
+
+.other-projects-block 
+.project-page__img				{ @include span-columns(11 of 20);margin-top: 0; @include shift(0); box-shadow: none; outline: none;}
+
+.other-project-block__desc		{ @include span-columns(8 of 20);}
+
+.right-align .project-page__img { @include shift(1);}
+
+.left-align .other-project-block__desc	{ @include shift(1);}
+
+
+//-----------------------------//
+//-- Animations
+//-----------------------------//
+
+@include media(min-width 480px) {
+
+
+.fixed-header.animate 			{ 					
+									@include animation-name(navSlideIn);														
+									@include animation-duration(1s);
+									@include transition(all 1s $ease-out-circ);
+									@include animation-fill-mode(forwards)
+			   					}
+
+
+			   					@include keyframes(navSlideIn) { from { top: -60px } to { top: 0 }}
+
+
+.webpage-img 					{
+									@include animation-name(intro);
+									@include animation-delay(2s);
+									@include animation-duration(0.8s);
+									@include transition(all 1s $ease-out-circ);
+									@include animation-fill-mode(forwards)
+		     					}
+
+								@include keyframes(intro) { to{margin-left: -24px; margin-top: -20px; width: 190px;}} 	
+
+
+
+.strapline 						{
+									opacity: 0;
+									@include animation-name(fadeIn);
+									@include animation-delay(0.5s);
+									@include animation-duration(1.5s);
+									@include transition(all 1s $ease-out-circ);
+									@include animation-fill-mode(forwards);
+								}
+
+								@include keyframes(fadeIn) { from { opacity: 0 } to { opacity: 1 }}
+
+.intro-banner 					{ 
+								  opacity: 0; 
+								  @include animation-name(fadeIn);
+								  @include animation-delay(2s);
+								  @include animation-duration(2s);
+								  @include transition(all 1s $ease-in-expo);
+								  @include animation-fill-mode(forwards);
+								}
+
+								@include keyframes(slideUp) { from { opacity: 0; height: 0; } to { opacity: 1; height: 200px; }}
+
+.intro-banner__img				{ 
+								  top: 30px;
+								  @include animation-name(shiftUp);
+								  @include animation-delay(2.1s);
+								  @include animation-duration(1s);
+								  @include transition(all 1s $ease-out-circ);
+								  @include animation-fill-mode(forwards);
+								}
+
+
+								@include keyframes(slideRight) {to { left: 0}}
+								@include keyframes(slideDown) {to { top: -20px}}
+
+
+.contact__icon.animate			{
+								  opacity: 0;
+								  left: -30px;
+								  @include animation-name(slideRight, fadeIn);
+								  @include animation-duration(0.6s);
+								  @include transition(all 1s $ease-in-out-back);
+								  @include animation-fill-mode(forwards);
+								}
+
+
+								
+
+								@include keyframes(shiftUp) {to { top: 0px}}
+
+
+.featured__content.animate 		{
+								  @include animation-name(shiftUp);
+								  @include animation-duration(0.5s);
+								  @include transition(all 1s $ease-in-out-back);
+								  @include animation-fill-mode(forwards);
+								}
+
+								@include keyframes(fadeOut) {from { opacity: 0 }to { opacity: 1 }}
+
+
+body.animate-fade-out			{
+								  @include animation-name(fadeOut);
+								  @include animation-duration(0.5s);
+								  @include transition(all 1s $ease-in-out-back);
+								  @include animation-fill-mode(forwards);
+								}
+
+
+								@include keyframes(popIn) { 0% { @include transform(scale(0.95));} 100% { @include transform(scale(1));}}
+
+
+								
+.arrow__job-title.animate 		{
+								  @include animation-name(popIn, fadeIn);
+								  @include animation-duration(0.5s);
+								  @include transition(all 1s $ease-in-out-back);
+								  @include animation-fill-mode(forwards);
+								 }
+
+.slideable						{
+								  position: relative;	
+								  opacity: 0;
+								  @include animation-name(slideLeft, fadeIn);
+								  @include animation-delay(0.5s);
+								  @include animation-duration(1s);
+								  @include transition(all 1s $ease-out-circ);
+								  @include animation-fill-mode(forwards);
+								}
+
+								@include keyframes(slideLeft) {from { left: 20px }to { left: 0 }}
+
+
+// .contact__email.animate			{
+// 								  opacity: 0; 
+// 								  @include animation-name(fadeIn, shiftUp);
+// 								}
+}
+
+
+// .code.visible 				{ @include animation-name(slideUp);
+// 								  @include animation-duration(1s);
+// 								  @include transition(all 1s $ease-in-expo);
+// 								  @include animation-fill-mode(forwards);
+// 								}	
+
+.error							{ }
+.error .title 					{ font-size: 12em; font-family: $sans-serif; font-weight: $light; color: $green; @include text-centre;}
+.error .message					{ font-size: 2.4em; font-family: $sans-serif-body; font-weight: $regular; @include text-centre;}
+.error .message > a 			{ color: $green;}
+
+//----------------------------//
+//-- Override style
+//---------------------------//
+
+.no-border						{ border: none;}

@@ -1,0 +1,34 @@
+@import "settings";
+
+/* font-face */
+@include face;
+
+/* global foundicon styles */
+[class*="#{$classPrefix}"] {
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: inherit;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+[class*="#{$classPrefix}"]:before {
+  font-family: $fontName;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+}
+
+/* icons */
+
+@include i-class(facebook,"003");
+@include i-class(twitter,"004");
+@include i-class(github,"006");
+@include i-class(linkedin,"008");
+@include i-class(dribbble,"009");
+@include i-class(google-plus,"00d");
+@include i-class(skype,"013");
+
+
